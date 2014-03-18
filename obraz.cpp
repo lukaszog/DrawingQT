@@ -25,6 +25,44 @@ void Obraz::wstawPiksel(int x, int y, int r, int g, int b)
     dane[adr+2] = r;
     dane[adr+3] = 255;
 }
+void Obraz::sym(int x, int y, int x0, int y0)
+{
+    wstawPiksel(x+x0,y+y0,255,255,255);
+    wstawPiksel(y+x0,x+y0,255,255,255);
+    wstawPiksel(y+x0,-x+y0,255,255,255);
+    wstawPiksel(x+x0,-y+y0,255,255,255);
+    wstawPiksel(-y+x0,-x+y0,255,255,255);
+    wstawPiksel(-x+x0,-y+y0,255,255,255);
+    wstawPiksel(-y+x0,x+y0,255,255,255);
+    wstawPiksel(-x+x0,y+y0,255,255,255);
+
+}
+void Obraz::circle(int x0, int y0, int r)
+{
+    int x,y,dx;
+    float d;
+    x = 0;
+    y = r;
+    d = 1 -r;
+    sym(x,y,x0,y0);
+
+    while(x<y)
+    {
+        if (d < 0)
+        {
+            d = d + 2*x + 3;
+            x++;
+        }
+        else
+        {
+            dx=x-y;
+            d += 2 * dx + 5;
+            x++;
+            y--;
+        }
+          sym(x,y,x0,y0);
+    }
+}
 
 void Obraz::linia(int x1, int y1, int x2, int y2)
 {
@@ -37,6 +75,7 @@ void Obraz::linia(int x1, int y1, int x2, int y2)
         float a = (float)i/l;
         wstawPiksel(x1 + dx*a, y1 + dy*a, 255, 255, 255);
     }*/
+
     bool spr = (fabs(y2-y1) > fabs(x2-x1));
     if(spr)
     {

@@ -14,6 +14,7 @@ protected:
     Obraz *im;
 
     void paintEvent(QPaintEvent *);
+    void mouseMoveEvent(QMouseEvent *);
 
 signals:
 

@@ -29,7 +29,8 @@ MainWindow::MainWindow(QWidget *parent) :
     } */
     //gwiazda
     obraz->linia(0,0,200,400);
-
+    obraz->circle(200,150,100);
+    ui->widget->update();
     ui->widget->setObraz(obraz);
 }
 
@@ -55,7 +56,6 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
 void MainWindow::changeEvent(QEvent *e)
 {
     QMainWindow::changeEvent(e);
