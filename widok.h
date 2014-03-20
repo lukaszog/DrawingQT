@@ -10,7 +10,7 @@ Q_OBJECT
 public:
     explicit Widok(QWidget *parent = 0);
     void setObraz(Obraz *nowy);
-    int x1,x2,y1,y2,klik;
+    int x1,x2,y1,y2,klik,i,x[4],y[4];
 protected:
     Obraz *im;
 

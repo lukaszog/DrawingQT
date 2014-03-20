@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'widok.h'
 **
-** Created: Tue Mar 18 12:40:03 2014
+** Created: Thu Mar 20 15:04:53 2014
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.3)
 **
 ** WARNING! All changes made in this file will be lost!

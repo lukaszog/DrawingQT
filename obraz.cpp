@@ -38,6 +38,24 @@ void Obraz::sym(int x, int y, int x0, int y0)
     wstawPiksel(-x+x0,y+y0,255,255,255);
 
 }
+void Obraz::bezier(int x[],int y[])
+{
+    int i;
+    double t;
+    for(t = 0.0; t < 1.0; t += 0.0005)
+    {
+        double xt = pow(1-t, 3) * x[0] + 3 * t * pow (1-t, 2) * x[1] + 3 * pow (t, 2) * (1-t) * x[2] + pow (t, 3) * x[3];
+        double yt = pow(1-t, 3) * y[0] + 3 * t * pow (1-t, 2) * y[1] + 3 * pow (t, 2) * (1-t) * y[2] + pow (t, 3) * y[3];
+
+        wstawPiksel(yt,xt,255,255,255);
+    }
+
+    for(i=0; i<4;i++)
+    {
+        wstawPiksel(x[i],y[i],232,232,232);
+    }
+}
+
 void Obraz::circle(int x0, int y0, int r)
 {
     int x,y;
@@ -46,7 +64,6 @@ void Obraz::circle(int x0, int y0, int r)
     y = r;
     d=1-r;
     sym(x,y,x0,y0);
-
     while(x<y)
     {
         if (d <= 0)

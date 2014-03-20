@@ -28,10 +28,8 @@ MainWindow::MainWindow(QWidget *parent) :
         obraz->linia(150, 150, 150 + 100*cos(a), 150 + 100*sin(a));
     } */
 
-    //gwiazda
     //obraz->linia(0,0,200,400);
-
-    obraz->circle(200,150,100);
+    //obraz->circle(200,150,100);
 
     ui->widget->update();
     ui->widget->setObraz(obraz);
