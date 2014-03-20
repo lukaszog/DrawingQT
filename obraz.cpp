@@ -67,17 +67,8 @@ void Obraz::circle(int x0, int y0, int r)
 
 void Obraz::linia(int x1, int y1, int x2, int y2)
 {
-    /*int dx = x2 - x1;
-    int dy = y2 - y1;
-    int l = sqrt(dx*dx + dy*dy)*2;
-
-    for (int i = 0; i <= l; ++i)
-    {
-        float a = (float)i/l;
-        wstawPiksel(x1 + dx*a, y1 + dy*a, 255, 255, 255);
-    }*/
-
     bool spr = (fabs(y2-y1) > fabs(x2-x1));
+
     if(spr)
     {
        std::swap(x1,y1);
@@ -89,29 +80,30 @@ void Obraz::linia(int x1, int y1, int x2, int y2)
         std::swap(x1,x2);
         std::swap(y1,y2);
     }
-    float dx = x2 - x1;
-    float dy = fabs(y2-y1);
 
-    float error = dx / 2.0f;
+    float dx = x2 - x1; //odleglosc dx
+    float dy = fabs(y2-y1); //odleglosc dy
+
+    float error = dx / 2.0f; //wartosc wyrazenia bledu
     int ystep = ( y1 < y2 ) ? 1 : -1;
     int y = (int)y1;
 
-    int maxX = (int)x2;
-
+    int maxX = (int)x2; //do jakiego x2 mamy isc
+    //x1 punk poczatkowy
     for(int x=(int)x1; x<maxX; x++)
     {
         if(spr)
         {
-             wstawPiksel(x,y, 255, 255, 255);
+             wstawPiksel(x,y, 255, 255, 255); //w kierunku x
         }
         else
         {
-             wstawPiksel(y,x, 255, 255, 255);
+             wstawPiksel(y,x, 255, 255, 255); //w kierunku wolnym y
         }
-
         error -= dy;
         if(error < 0)
         {
+            //po ruchu wolnym modyfikacja wyrazenia bledu
             y += ystep;
             error += dx;
         }

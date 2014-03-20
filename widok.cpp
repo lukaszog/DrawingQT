@@ -41,6 +41,7 @@ void Widok::mousePressEvent(QMouseEvent *e)
         y2 = e->y();
 
         qDebug("x1: %d y1: %d\n x2: %d y2: %d", x1,y1,x2,y2);
+
         im->linia(y1,x1,y2,x2);
     }
 
