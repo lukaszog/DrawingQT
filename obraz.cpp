@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include "obraz.h"
 #include <math.h>
+#include <QtDebug>
 #include <iostream>
 
 Obraz::Obraz(int szer, int wys)
@@ -39,28 +40,28 @@ void Obraz::sym(int x, int y, int x0, int y0)
 }
 void Obraz::circle(int x0, int y0, int r)
 {
-    int x,y,dx;
+    int x,y;
     float d;
-    x = 0;
+    x = 0; //wartosci pocztkowe, zwieksza sie o jeden
     y = r;
-    d = 1 -r;
+    d=1-r;
     sym(x,y,x0,y0);
 
     while(x<y)
     {
-        if (d < 0)
+        if (d <= 0)
         {
-            d = d + 2*x + 3;
-            x++;
+            d +=2*x+3;
+            x++;//kolejna iteracja
         }
         else
         {
-            dx=x-y;
-            d += 2 * dx + 5;
+            d += 2*x+3-2*y+2;
             x++;
             y--;
         }
-          sym(x,y,x0,y0);
+        qDebug("Piksel w miejscu x: %d y: %d x0: %d y0: %d",x,y,x0,y0);
+        sym(x,y,x0,y0);
     }
 }
 

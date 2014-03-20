@@ -10,11 +10,12 @@ Q_OBJECT
 public:
     explicit Widok(QWidget *parent = 0);
     void setObraz(Obraz *nowy);
+    int x1,x2,y1,y2,klik;
 protected:
     Obraz *im;
 
     void paintEvent(QPaintEvent *);
-    void mouseMoveEvent(QMouseEvent *);
+    void mousePressEvent(QMouseEvent *);
 
 signals:
 

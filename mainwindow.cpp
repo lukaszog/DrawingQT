@@ -27,9 +27,12 @@ MainWindow::MainWindow(QWidget *parent) :
         float a = 3.1416*2*i/c;
         obraz->linia(150, 150, 150 + 100*cos(a), 150 + 100*sin(a));
     } */
+
     //gwiazda
-    obraz->linia(0,0,200,400);
+    //obraz->linia(0,0,200,400);
+
     obraz->circle(200,150,100);
+
     ui->widget->update();
     ui->widget->setObraz(obraz);
 }

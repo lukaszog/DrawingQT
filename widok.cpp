@@ -7,6 +7,7 @@ Widok::Widok(QWidget *parent) :
     QWidget(parent)
 {
     im = NULL;
+    klik =0;
 }
 
 void Widok::paintEvent(QPaintEvent *)
@@ -18,11 +19,31 @@ void Widok::paintEvent(QPaintEvent *)
         p.drawImage(0, 0, c);
     }
 }
-void Widok::mouseMoveEvent(QMouseEvent *e)
+void Widok::mousePressEvent(QMouseEvent *e)
 {
-    if(im == NULL) return;
+   /* if(im == NULL) return;
     im->wstawPiksel(e->x(), e->y(),255,255,255);
-    update();
+    update(); */
+
+    if (e->button() == Qt::LeftButton)
+    {
+      klik++;
+      if(klik==1)
+      {
+         x1 = e->x();
+         y1 = e->y();
+         qDebug("%d",klik);
+      }
+    }
+    if(klik == 2)
+    {
+        x2 = e->x();
+        y2 = e->y();
+
+        qDebug("x1: %d y1: %d\n x2: %d y2: %d", x1,y1,x2,y2);
+        im->linia(y1,x1,y2,x2);
+    }
+
 }
 
 void Widok::setObraz(Obraz *nowy)

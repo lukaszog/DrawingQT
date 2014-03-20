@@ -1,6 +1,7 @@
 # -------------------------------------------------
 # Project created by QtCreator 2014-02-18T14:53:16
 # -------------------------------------------------
+QT+=core gui
 TARGET = zad1
 TEMPLATE = app
 SOURCES += main.cpp \
