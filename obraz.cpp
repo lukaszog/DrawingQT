@@ -47,7 +47,7 @@ void Obraz::bezier(int x[],int y[])
         double xt = pow(1-t, 3) * x[0] + 3 * t * pow (1-t, 2) * x[1] + 3 * pow (t, 2) * (1-t) * x[2] + pow (t, 3) * x[3];
         double yt = pow(1-t, 3) * y[0] + 3 * t * pow (1-t, 2) * y[1] + 3 * pow (t, 2) * (1-t) * y[2] + pow (t, 3) * y[3];
 
-        wstawPiksel(yt,xt,255,255,255);
+        wstawPiksel(xt,yt,255,255,255);
     }
 
     for(i=0; i<4;i++)
@@ -55,7 +55,17 @@ void Obraz::bezier(int x[],int y[])
         wstawPiksel(x[i],y[i],232,232,232);
     }
 }
-
+void Obraz::Elipsa(int x0, int y0, int promx, int promy, int r, int g, int b, float l)
+{
+   for(float c = 0; c<2*3.14; c=c+0.01)
+   {
+        float x = promx * cos(c);
+        float y = promy * sin(c);
+        float ox = cos(l)*x - sin(l)*y+x0;
+        float oy = sin(l)*x - cos(l)*y+y0;
+        wstawPiksel(ox, oy, r, g, b);
+   }
+}
 void Obraz::circle(int x0, int y0, int r)
 {
     int x,y;
@@ -101,7 +111,7 @@ void Obraz::linia(int x1, int y1, int x2, int y2)
     float dx = x2 - x1; //odleglosc dx
     float dy = fabs(y2-y1); //odleglosc dy
 
-    float error = dx / 2.0f; //wartosc wyrazenia bledu
+    float error = 0; //wartosc wyrazenia bledu
     int ystep = ( y1 < y2 ) ? 1 : -1;
     int y = (int)y1;
 

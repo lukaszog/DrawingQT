@@ -28,8 +28,9 @@ MainWindow::MainWindow(QWidget *parent) :
         obraz->linia(150, 150, 150 + 100*cos(a), 150 + 100*sin(a));
     } */
 
-    //obraz->linia(0,0,200,400);
+    obraz->linia(0,0,200,2);
     //obraz->circle(200,150,100);
+    obraz->Elipsa(90,100,30,29,255,255,0,0);
 
     ui->widget->update();
     ui->widget->setObraz(obraz);

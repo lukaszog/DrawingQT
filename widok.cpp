@@ -24,20 +24,41 @@ void Widok::mousePressEvent(QMouseEvent *e)
     if (e->button() == Qt::LeftButton)
     {
       klik++;
-
       //bezier
-      if(klik==1) { x[0] = e->x(); qDebug("zapidalem %d",x[0]); y[0] = e->y();}
+     /* if(klik==1) { x[0] = e->x(); qDebug("zapidalem %d",x[0]); y[0] = e->y();}
       if(klik==2) { x[1] = e->x(); y[1] = e->y();}
-      if(klik==4) { x[2] = e->x(); y[2] = e->y();}
-      if(klik==5) { x[3] = e->x(); y[3] = e->y();}
-
+      if(klik==3) { x[2] = e->x(); y[2] = e->y();}
+      if(klik==4) { x[3] = e->x(); y[3] = e->y();}
+    */
       if(klik==1)
       {
          x1 = e->x();
          y1 = e->y();
          qDebug("%d",klik);
       }
+      if(klik == 2)
+      {
+          x2 = e->x();
+          y2 = e->y();
+
+          qDebug("x1: %d y1: %d\n x2: %d y2: %d", x1,y1,x2,y2);
+
+          im->Elipsa(x1,y1,x2,x2,255,255,0,0);
+
+
+
+         // im->linia(y1,x1,y2,x2);
+      }
+
+
+
+
+
+
+
     }
+    //linia
+    /*
     if(klik == 2)
     {
         x2 = e->x();
@@ -47,6 +68,7 @@ void Widok::mousePressEvent(QMouseEvent *e)
 
        // im->linia(y1,x1,y2,x2);
     }
+    */
 
     if(klik == 4)
     {
@@ -55,7 +77,7 @@ void Widok::mousePressEvent(QMouseEvent *e)
         {
             qDebug("nr: %d x: %d y: %d \n",k,x[k],y[k]);
         }
-        im->bezier(x,y);
+        //im->bezier(x,y);
     }
 
 }
